@@ -4,15 +4,25 @@
 # crossfade from its last second into its first, plus each loop's first frame
 # as the still shown while it loads and under reduced motion.
 #
-#   tools/sky.sh clip.MOV [x]
+#   tools/sky.sh [-s] clip.MOV [x]
 #
+# -s first holds the city still (tools/steady.py) for a take where the mount
+# drifted; it needs numpy.
 # x places the portrait slice across the frame, 0 = left edge, 1 = right,
 # default 0.5; use it when the subject of a new take isn't central. Writes
 # sky-{tall,wide}.{mp4,jpg} beside index.html; commit and push to publish.
 set -euo pipefail
-src=$1
+steady=0
+[[ ${1:-} == -s ]] && { steady=1; shift; }
+src=${1:A}
 x=${2:-0.5}
 cd "${0:A:h}/.."
+if (( steady )); then
+  tmp=$(mktemp -d)
+  trap 'rm -rf "$tmp"' EXIT
+  python3 tools/steady.py "$src" "$tmp/steady.mp4"
+  src=$tmp/steady.mp4
+fi
 
 dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "$src")
 end=$(( dur - 1 ))
