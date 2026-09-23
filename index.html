@@ -55,10 +55,58 @@
     letter-spacing: 0.0125em;
     color: rgba(255, 255, 255, 0.92);
   }
+  /* The sign-up posts straight to Buttondown, which confirms by email and
+     carries the unsubscribe link. A plain form with no script, so nothing
+     loads from Buttondown until someone presses the button. */
+  form {
+    display: flex;
+    gap: 8px;
+    width: min(100% - 32px, 380px);
+    margin-top: 12px;
+  }
+  form, .note {
+    font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  }
+  input, button {
+    font: inherit;
+    border-radius: 12px;
+    padding: 11px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  input {
+    flex: 1;
+    min-width: 0;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  input::placeholder { color: rgba(255, 255, 255, 0.45); }
+  input:focus { outline: none; border-color: rgba(255, 176, 90, 0.8); }
+  button {
+    color: #1a0c05;
+    background: #f0a04b;
+    border-color: transparent;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  button:hover { background: #f6b265; }
+  .note {
+    margin: -16px 0 0;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+    text-align: center;
+    padding: 0 16px;
+  }
+  .note a { color: inherit; }
 </style>
 </head>
 <body>
   <img class="icon" src="icon-512.png" alt="Timelasso app icon">
   <h1>timelasso.app</h1>
+  <form action="https://buttondown.com/api/emails/embed-subscribe/timelasso" method="post">
+    <label for="email" hidden>Email address</label>
+    <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+    <button type="submit">Keep me posted</button>
+  </form>
+  <p class="note">Launch news only. Unsubscribe any time. Or write to <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
 </body>
 </html>
