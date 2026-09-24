@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Timelasso</title>
-<meta name="description" content="Timelasso — timelapse for iPhone.">
+<meta name="description" content="Catch any amount of time in a short timelapse. Coming soon to iPhone.">
 <meta name="theme-color" content="#161a26">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -22,7 +22,8 @@
 
   /* A Timelasso clip of the City under cloud, looped with a one-second
      crossfade from its last second into its first. Towers fill the lower half,
-     so the name sits in the sky above them and the form on the streets below,
+     so the name sits in the sky above them and the words and the form on the
+     streets below,
      each over a darkened band; the towers in between are left clear. The
      stills are each clip's first frame, shown while it loads and instead of it
      under reduced motion (no <source> matches then, so nothing downloads).
@@ -59,7 +60,7 @@
     content: "";
     background: linear-gradient(to bottom,
       rgba(8, 10, 24, 0.55) 0%, rgba(8, 10, 24, 0) 40%,
-      rgba(8, 10, 24, 0) 62%, rgba(8, 10, 24, 0.7) 100%);
+      rgba(8, 10, 24, 0) 52%, rgba(8, 10, 24, 0.75) 100%);
   }
 
   header, footer {
@@ -69,7 +70,7 @@
     width: 100%;
   }
   header { gap: 20px; }
-  footer { gap: 12px; }
+  footer { gap: 32px; }
 
   .icon {
     width: min(38vw, 180px);
@@ -122,6 +123,33 @@
     cursor: pointer;
   }
   button:hover { background: #ffe04d; }
+  /* Plain system type, so the wordmark stays the only Huninn on the page. */
+  /* The footer is two groups: what the app does, then a wider gap, then the
+     sign-up it leads to, headed by when. */
+  .pitch, .soon {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  .pitch {
+    width: min(100%, 380px);
+    font-size: 17px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.88);
+  }
+  .soon {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  .signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
   .note {
     margin: 0;
     font-size: 13px;
@@ -142,12 +170,16 @@
     <h1>timelasso.app</h1>
   </header>
   <footer>
-    <form action="https://buttondown.com/api/emails/embed-subscribe/timelasso" method="post">
-      <label for="email" hidden>Email address</label>
-      <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-      <button type="submit">Keep me posted</button>
-    </form>
-    <p class="note">Launch news only. Unsubscribe any time. Or write to <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
+    <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
+    <div class="signup">
+      <p class="soon">Coming soon to iPhone</p>
+      <form action="https://buttondown.com/api/emails/embed-subscribe/timelasso" method="post">
+        <label for="email" hidden>Email address</label>
+        <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit">Keep me posted</button>
+      </form>
+      <p class="note">Launch news only. Unsubscribe any time. Or write to <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
+    </div>
   </footer>
 </body>
 </html>
