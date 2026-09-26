@@ -72,16 +72,17 @@
 
   /* The logotype: Bpmf Huninn's outlines (OFL, see OFL.txt) with "sso" as
      one rope, drawn by design/logotype/make.py in the app's repo, which
-     writes the app's watermark from the same outline. The em is the size the
-     type was set at; the image is the font's line from ascender to
-     descender, 0.97 of it. */
+     writes the app's watermark from the same outline. Here without ".app",
+     which the address bar already says, and so larger than the watermark's
+     whole name could be. The em is the size the letters are set at; the
+     image runs from the l's ascender to just under the baseline, 0.79 of it. */
   h1 {
     margin: 0;
-    font-size: min(10vw, 48px);
+    font-size: min(16vw, 72px);
     line-height: 0;
   }
   h1 img {
-    height: 0.97em;
+    height: 0.79em;
     filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.5));
   }
   /* The sign-up posts straight to Buttondown, which confirms by email and
@@ -163,7 +164,7 @@
   </video>
   <header>
     <img class="icon" src="icon-512.png" alt="Timelasso app icon">
-    <h1><img src="wordmark.svg?v=287d0241" alt="timelasso.app"></h1>
+    <h1><img src="wordmark.svg?v=d8c57d7f" alt="timelasso"></h1>
   </header>
   <footer>
     <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
