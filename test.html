@@ -6,7 +6,7 @@
 <title>Timelasso test</title>
 <!-- Passed around by hand, never linked from the site, and kept out of search. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Try Timelasso before it launches.">
+<meta name="description" content="Timelapse without the maths. Try Timelasso before it launches.">
 <meta name="theme-color" content="#161a26">
 <link rel="icon" type="image/png" href="favicon.png?v=ob">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=ob">
@@ -70,6 +70,17 @@
     margin: 0;
     font-size: min(13vw, 64px);
     line-height: 0;
+  }
+  /* The strapline: British spelling, deliberately; the US App Store subtitle says "math". */
+  .strap {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
   }
   h1 img {
     height: 0.79em;
@@ -235,6 +246,7 @@
   <header>
     <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
+    <p class="strap">Timelapse without the maths</p>
     <p class="badge">Pre-release test</p>
   </header>
   <main>
