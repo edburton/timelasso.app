@@ -76,7 +76,7 @@
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     /* Sized to the wordmark's width: 0.339 of the h1's font size, measured against its ink. */
-    font-size: min(4.405vw, 21.69px);
+    font-size: calc(min(4.405vw, 21.69px) * var(--word, 1));
     white-space: nowrap;
     font-weight: 500;
     letter-spacing: 0.01em;
@@ -217,7 +217,7 @@
     header { gap: 10px; }
     .icon { width: min(20vw, 144px); }
     h1 { font-size: min(11vw, 64px); }
-    .strap { font-size: min(3.727vw, 21.69px); }
+    .strap { font-size: calc(min(3.727vw, 21.69px) * var(--word, 1)); }
     .steps li { padding: 9px 0; }
     .panel p { padding-top: 11px; font-size: 14px; }
   }
@@ -250,6 +250,18 @@
     <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
     <p class="strap">Timelapse without the maths</p>
+    <script>
+      /* Americans say math. The time zone says where someone is better than
+         the language setting does, and Pages can't geolocate. */
+      try {
+        if (Intl.DateTimeFormat().resolvedOptions().timeZone.startsWith("America/"))
+        {
+          const strap = document.currentScript.previousElementSibling;
+          strap.textContent = "Timelapse without the math";
+          strap.style.setProperty("--word", 1.0405);  /* "maths" over "math", measured */
+        }
+      } catch (e) {}
+    </script>
     <p class="badge">Pre-release test</p>
   </header>
   <main>
