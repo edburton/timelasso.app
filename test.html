@@ -75,7 +75,9 @@
   .strap {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    font-size: 19px;
+    /* Sized to the wordmark's width: 0.339 of the h1's font size, measured against its ink. */
+    font-size: min(4.405vw, 21.69px);
+    white-space: nowrap;
     font-weight: 500;
     letter-spacing: 0.01em;
     color: #fff;
@@ -215,6 +217,7 @@
     header { gap: 10px; }
     .icon { width: min(20vw, 144px); }
     h1 { font-size: min(11vw, 64px); }
+    .strap { font-size: min(3.727vw, 21.69px); }
     .steps li { padding: 9px 0; }
     .panel p { padding-top: 11px; font-size: 14px; }
   }
