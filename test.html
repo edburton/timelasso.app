@@ -50,14 +50,14 @@
       rgba(8, 10, 24, 0) 44%, rgba(8, 10, 24, 0.8) 100%);
   }
 
-  header, footer {
+  header, main, footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
   header { gap: 14px; }
-  footer { gap: 16px; }
+  footer { gap: 12px; }
 
   /* Smaller than the home page's, to leave the streets for the steps. */
   .icon {
@@ -101,6 +101,8 @@
     color: rgba(255, 255, 255, 0.88);
   }
 
+  /* The action sits in the middle, over the towers: the steps on an iPhone
+     or iPad, a pointer to one anywhere else. */
   /* Two steps in order, because Join does nothing until TestFlight is on
      the phone. */
   .steps {
@@ -158,7 +160,14 @@
   /* Shown in place of the steps anywhere but an iPhone or iPad. */
   .elsewhere {
     display: none;
+    box-sizing: border-box;
     width: min(100%, 380px);
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 18px;
+    background: rgba(12, 14, 28, 0.5);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     font-size: 17px;
     line-height: 1.45;
     text-align: center;
@@ -178,12 +187,12 @@
 
   /* The name settles in over the sky, then the steps rise under it. */
   @media (prefers-reduced-motion: no-preference) {
-    header > *, footer > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    header > *, main, footer > * { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
     header > :nth-child(2) { animation-delay: 0.12s; }
     header > :nth-child(3) { animation-delay: 0.5s; }
-    footer > :nth-child(1) { animation-delay: 0.7s; }
-    footer > :nth-child(2), footer > :nth-child(3) { animation-delay: 0.85s; }
-    footer > :nth-child(4) { animation-delay: 1s; }
+    main { animation-delay: 0.7s; }
+    footer > :nth-child(1) { animation-delay: 0.9s; }
+    footer > :nth-child(2) { animation-delay: 1.05s; }
     @keyframes rise {
       from { opacity: 0; transform: translateY(14px); }
     }
@@ -206,14 +215,16 @@
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
     <p class="badge">Pre-release test</p>
   </header>
-  <footer>
-    <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
+  <main>
     <ol class="steps">
       <li><span>Install Apple’s TestFlight</span><a href="https://apps.apple.com/app/testflight/id899247664">Get</a></li>
       <!-- TODO: the public link from App Store Connect, TestFlight → the group → Public Link. -->
       <li><span>Join the Timelasso test</span><a class="join" href="https://testflight.apple.com/join/XXXXXXXX">Join</a></li>
     </ol>
     <p class="elsewhere">Open this page on your iPhone or iPad:<br><strong>timelasso.app/test</strong></p>
+  </main>
+  <footer>
+    <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
     <p class="note">The sky behind this page is a Timelasso clip. Needs iOS 26. Removing the watermark is free while testing. Feedback: screenshot in the app, or <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
   </footer>
 </body>
