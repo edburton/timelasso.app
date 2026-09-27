@@ -175,7 +175,13 @@
     line-height: 1.45;
     text-align: center;
   }
-  .elsewhere strong { color: #ffd60a; font-weight: 600; }
+  /* A real link, so it can be copied, dragged or shared to a phone. */
+  .elsewhere a {
+    color: #ffd60a;
+    font-weight: 600;
+    text-decoration-color: rgba(255, 214, 10, 0.45);
+    text-underline-offset: 3px;
+  }
   .not-ios .panel { display: none; }
   .not-ios .elsewhere { display: block; }
 
@@ -240,7 +246,7 @@
     </ol>
     <p>In-app purchases are free while you test. To send feedback, screenshot the app and choose <strong>Share&nbsp;→ Share Beta Feedback</strong>, or long-press its icon and choose <strong>Send Beta Feedback</strong>. Or email <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
     </div>
-    <p class="elsewhere">Open this page on your iPhone or iPad:<br><strong>timelasso.app/test</strong></p>
+    <p class="elsewhere">Open this page on your iPhone or iPad:<br><a href="https://timelasso.app/test">timelasso.app/test</a></p>
   </main>
   <footer>
     <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
