@@ -6,7 +6,7 @@
 <title>Timelasso test</title>
 <!-- Passed around by hand, never linked from the site, and kept out of search. -->
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Timelapse without the maths. Try Timelasso before it launches.">
+<meta name="description" content="Timelapse without a timetable. Try Timelasso before it launches.">
 <meta name="theme-color" content="#161a26">
 <link rel="icon" type="image/png" href="favicon.png?v=ob">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=ob">
@@ -71,12 +71,12 @@
     font-size: min(13vw, 64px);
     line-height: 0;
   }
-  /* The strapline: British spelling, deliberately; the US App Store subtitle says "math". */
+  /* The strapline: one line for everyone, and it fits the App Store subtitle's 30 characters. */
   .strap {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     /* Sized to the wordmark's width: 0.339 of the h1's font size, measured against its ink. */
-    font-size: calc(min(4.405vw, 21.69px) * var(--word, 1));
+    font-size: min(4.248vw, 20.92px);
     white-space: nowrap;
     font-weight: 500;
     letter-spacing: 0.01em;
@@ -217,7 +217,7 @@
     header { gap: 10px; }
     .icon { width: min(20vw, 144px); }
     h1 { font-size: min(11vw, 64px); }
-    .strap { font-size: calc(min(3.727vw, 21.69px) * var(--word, 1)); }
+    .strap { font-size: min(3.594vw, 20.92px); }
     .steps li { padding: 9px 0; }
     .panel p { padding-top: 11px; font-size: 14px; }
   }
@@ -249,19 +249,7 @@
   <header>
     <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
-    <p class="strap">Timelapse without the maths</p>
-    <script>
-      /* Americans say math. The time zone says where someone is better than
-         the language setting does, and Pages can't geolocate. */
-      try {
-        if (Intl.DateTimeFormat().resolvedOptions().timeZone.startsWith("America/"))
-        {
-          const strap = document.currentScript.previousElementSibling;
-          strap.textContent = "Timelapse without the math";
-          strap.style.setProperty("--word", 1.0405);  /* "maths" over "math", measured */
-        }
-      } catch (e) {}
-    </script>
+    <p class="strap">Timelapse without a timetable</p>
     <p class="badge">Pre-release test</p>
   </header>
   <main>

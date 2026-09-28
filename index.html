@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Timelasso</title>
-<meta name="description" content="Timelapse without the maths. Catch any amount of time in a short timelapse. Coming soon to iPhone.">
+<meta name="description" content="Timelapse without a timetable. Catch any amount of time in a short timelapse. Coming soon to iPhone.">
 <meta name="theme-color" content="#161a26">
 <link rel="icon" type="image/png" href="favicon.png?v=ob">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=ob">
@@ -81,12 +81,12 @@
     font-size: min(16vw, 72px);
     line-height: 0;
   }
-  /* The strapline: British spelling, deliberately; the US App Store subtitle says "math". */
+  /* The strapline: one line for everyone, and it fits the App Store subtitle's 30 characters. */
   .strap {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     /* Sized to the wordmark's width: 0.339 of the h1's font size, measured against its ink. */
-    font-size: calc(min(5.422vw, 24.40px) * var(--word, 1));
+    font-size: min(5.229vw, 23.53px);
     white-space: nowrap;
     font-weight: 500;
     letter-spacing: 0.01em;
@@ -178,19 +178,7 @@
   <header>
     <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
-    <p class="strap">Timelapse without the maths</p>
-    <script>
-      /* Americans say math. The time zone says where someone is better than
-         the language setting does, and Pages can't geolocate. */
-      try {
-        if (Intl.DateTimeFormat().resolvedOptions().timeZone.startsWith("America/"))
-        {
-          const strap = document.currentScript.previousElementSibling;
-          strap.textContent = "Timelapse without the math";
-          strap.style.setProperty("--word", 1.0405);  /* "maths" over "math", measured */
-        }
-      } catch (e) {}
-    </script>
+    <p class="strap">Timelapse without a timetable</p>
   </header>
   <footer>
     <p class="pitch">Catch any amount of time in a short timelapse. Pick the clip length, then record for minutes, hours or days, and stop whenever you like.</p>
