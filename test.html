@@ -219,13 +219,16 @@
 
   /* A 12 mini's Safari is 629 pt tall: everything on one screen there. */
   @media (max-height: 700px) {
-    body { gap: 16px; }
+    body { gap: 12px; }
     header { gap: 10px; }
     .icon { width: min(20vw, 144px); }
     h1 { font-size: min(11vw, 64px); }
     .strap { font-size: min(3.594vw, 20.92px); }
-    .steps li { padding: 9px 0; }
-    .panel p { padding-top: 11px; font-size: 14px; }
+    .steps li { padding: 7px 0; }
+    .panel p { padding-top: 9px; font-size: 14px; }
+    /* What the follow line costs, given back. */
+    footer { gap: 4px; }
+    .follow { font-size: 12px; }
   }
 
   /* The name settles in over the sky, then the steps rise under it. */
