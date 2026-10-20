@@ -1,50 +1,27 @@
-/* The text pages (support, privacy): the home page's night sky without the
-   clip, so the logotype stands on the dark it was drawn for. The sky is a
-   fixed layer of its own because iOS Safari ignores background-attachment:
-   fixed, and a long page would otherwise scroll off the gradient. */
-html { background: #07061a; }
+/* The text pages (support, privacy): plain black, so the logotype stands on
+   the dark it was drawn for, and nothing competes with the text. */
+html { background: #000; }
 body {
   margin: 0;
   color: rgba(255, 255, 255, 0.88);
   font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   -webkit-text-size-adjust: 100%;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(172deg, #07061a 0%, #120b33 42%, #25124f 72%, #3a1450 100%);
-}
 
-/* The logotype heads the page and leads home: the same outline as the home
-   page's (wordmark.svg, drawn by design/logotype/make.py in the app's repo),
-   at a size that sits over a column of text rather than a full screen. */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: max(48px, env(safe-area-inset-top) + 32px) 16px 8px;
-}
-header a { display: block; line-height: 0; }
-header img {
-  height: min(11vw, 52px);
-  filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.5));
-}
-.strap {
-  margin: 0;
-  font-size: min(3.6vw, 16px);
-  font-weight: 500;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-main {
+/* The logotype heads the text column, left aligned with it, and leads home:
+   the same outline as the home page's (wordmark.svg, drawn by
+   design/logotype/make.py in the app's repo). */
+header, main {
   max-width: 38em;
   margin: 0 auto;
-  padding: 24px 16px max(64px, env(safe-area-inset-bottom) + 32px);
+  padding-left: max(16px, env(safe-area-inset-left));
+  padding-right: max(16px, env(safe-area-inset-right));
 }
+header { padding-top: max(40px, env(safe-area-inset-top) + 24px); }
+header a { display: inline-block; line-height: 0; }
+header img { height: min(9vw, 40px); }
+
+main { padding-top: 28px; padding-bottom: max(64px, env(safe-area-inset-bottom) + 32px); }
 h1 {
   margin: 0 0 4px;
   font-size: 28px;
