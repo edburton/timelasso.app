@@ -85,10 +85,13 @@
     width: 100%;
   }
   header { gap: 20px; }
-  footer { gap: 32px; }
+  /* The widest gap on the page sits over the badge, so it reads as where the
+     page leads rather than one more line. */
+  footer { gap: 44px; }
 
   .icon {
-    width: min(38vw, 180px);
+    display: block;
+    width: min(30vw, 144px);
     aspect-ratio: 1;
     border-radius: 22.37%;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
@@ -169,7 +172,7 @@
   }
   .get .badge img {
     display: block;
-    height: 56px;
+    height: 68px;
   }
   .free {
     margin: 0;
@@ -177,6 +180,7 @@
     font-size: 17px;
     font-weight: 600;
     text-align: center;
+    text-wrap: balance;
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
   }
   /* The QR code is for a visitor on a computer, who can't install from
@@ -206,7 +210,7 @@
     <source src="sky-wide.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
   </video>
   <header>
-    <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
+    <a href="https://apps.apple.com/app/id6814762728?ct=site-icon"><img class="icon" src="icon-512.png?v=ob" alt="Timelasso on the App Store"></a>
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
     <p class="strap">Timelapse without a timetable</p>
   </header>
