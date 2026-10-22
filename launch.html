@@ -129,8 +129,9 @@
     font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   }
   /* Plain system type, so the wordmark stays the only Huninn on the page. */
-  /* The footer is two groups: what the app does, then a wider gap, then
-     where to get it. */
+  /* The footer is three groups: what the app does, where to get it, and
+     the small links, each a wide gap from the next so the badge stands
+     alone between them. */
   .pitch {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
@@ -144,13 +145,14 @@
     line-height: 1.45;
     color: rgba(255, 255, 255, 0.88);
   }
-  .signup {
+  .action, .links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
     width: 100%;
   }
+  .action { gap: 16px; }
+  .links { gap: 8px; }
   .note {
     margin: 0;
     font-size: 13px;
@@ -177,7 +179,7 @@
   .free {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-    font-size: 17px;
+    font-size: 20px;
     font-weight: 600;
     text-align: center;
     text-wrap: balance;
@@ -216,7 +218,7 @@
   </header>
   <footer>
     <p class="pitch">Catch any amount of time in a short video. Pick its length, then record for minutes, hours or days, and stop whenever you like.</p>
-    <div class="signup">
+    <div class="action">
       <div class="get">
         <a class="badge" href="https://apps.apple.com/app/id6814762728?ct=site"><img src="app-store-badge.svg" alt="Download on the App Store"></a>
         <div class="qr">
@@ -225,6 +227,8 @@
         </div>
       </div>
       <p class="free">Free, with no subscription and no time limits</p>
+    </div>
+    <div class="links">
       <p class="note">Follow on <a href="https://www.instagram.com/timelasso.app/">Instagram</a>, <a href="https://www.tiktok.com/@timelasso">TikTok</a> and <a href="https://bsky.app/profile/timelasso.bsky.social">Bluesky</a>.</p>
       <p class="note"><a href="support">Support</a> · <a href="privacy">Privacy</a> · <a href="mailto:hello@timelasso.app">hello@timelasso.app</a></p>
     </div>
