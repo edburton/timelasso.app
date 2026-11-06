@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Timelasso: timelapse app for iPhone and iPad</title>
-<meta name="description" content="Timelapse without a timetable. Catch any amount of time in a short video. Coming soon to iPhone and iPad.">
+<meta name="description" content="Timelapse without a timetable. Catch any amount of time in a short video. Free on the App Store for iPhone and iPad.">
 <link rel="canonical" href="https://timelasso.app/">
 <meta property="og:title" content="Timelasso">
 <meta property="og:description" content="Timelapse without a timetable">
@@ -15,6 +15,11 @@
 <meta property="og:image:height" content="720">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#161a26">
+<!-- Safari on iPhone and iPad shows its own Get banner above the page,
+     or Open once the app is installed. -->
+<meta name="apple-itunes-app" content="app-id=6814762728">
+<link rel="icon" type="image/png" href="favicon.png?v=ob">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=ob">
 <!-- The app as search engines read it: what a result for the name can show. -->
 <script type="application/ld+json">
 {
@@ -24,21 +29,19 @@
   "description": "Timelapse without a timetable. Catch any amount of time in a short video.",
   "url": "https://timelasso.app/",
   "image": "https://timelasso.app/icon-512.png",
+  "installUrl": "https://apps.apple.com/app/id6814762728",
   "operatingSystem": "iOS 26, iPadOS 26",
   "applicationCategory": "MultimediaApplication",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" }
 }
 </script>
-<link rel="icon" type="image/png" href="favicon.png?v=ob">
-<link rel="apple-touch-icon" href="apple-touch-icon.png?v=ob">
 <style>
   html, body { margin: 0; height: 100%; }
 
   /* A Timelasso clip of the City under cloud, looped with a one-second
      crossfade from its last second into its first. Towers fill the lower half,
-     so the name sits in the sky above them and the words and the form on the
-     streets below,
-     each over a darkened band; the towers in between are left clear. The
+     so the name sits in the sky above them and the words and the badge on the
+     streets below, each over a darkened band; the towers in between are left clear. The
      stills are each clip's first frame, shown while it loads and instead of it
      under reduced motion (no <source> matches then, so nothing downloads).
      The night gradient under them is only what shows if neither arrives. */
@@ -84,10 +87,13 @@
     width: 100%;
   }
   header { gap: 20px; }
-  footer { gap: 32px; }
+  /* The widest gap on the page sits over the badge, so it reads as where the
+     page leads rather than one more line. */
+  footer { gap: 44px; }
 
   .icon {
-    width: min(38vw, 180px);
+    display: block;
+    width: min(30vw, 144px);
     aspect-ratio: 1;
     border-radius: 22.37%;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
@@ -121,45 +127,14 @@
     height: 0.79em;
     filter: drop-shadow(0 2px 18px rgba(0, 0, 0, 0.5));
   }
-  /* The sign-up posts straight to Buttondown, which confirms by email and
-     carries the unsubscribe link. A plain form with no script, so nothing
-     loads from Buttondown until someone presses the button. */
-  form {
-    display: flex;
-    gap: 8px;
-    width: min(100%, 380px);
-  }
-  form, .note {
+  .note {
     font: 16px/1.4 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   }
-  input, button {
-    font: inherit;
-    border-radius: 12px;
-    padding: 11px 14px;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-  }
-  input {
-    flex: 1;
-    min-width: 0;
-    color: #fff;
-    background: rgba(12, 14, 28, 0.45);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-  }
-  input::placeholder { color: rgba(255, 255, 255, 0.5); }
-  input:focus { outline: none; border-color: rgba(255, 214, 10, 0.8); }
-  button {
-    color: #1a0c05;
-    background: #ffd60a;
-    border-color: transparent;
-    font-weight: 600;
-    cursor: pointer;
-  }
-  button:hover { background: #ffe04d; }
   /* Plain system type, so the wordmark stays the only Huninn on the page. */
-  /* The footer is two groups: what the app does, then a wider gap, then the
-     sign-up it leads to, headed by when. */
-  .pitch, .soon {
+  /* The footer is three groups: what the app does, where to get it, and
+     the small links, each a wide gap from the next so the badge stands
+     alone between them. */
+  .pitch {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
     text-align: center;
@@ -168,21 +143,18 @@
   }
   .pitch {
     width: min(100%, 380px);
-    font-size: 17px;
+    font-size: 18px;
     line-height: 1.45;
     color: rgba(255, 255, 255, 0.88);
   }
-  .soon {
-    font-size: 17px;
-    font-weight: 600;
-  }
-  .signup {
+  .action, .links {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
     width: 100%;
   }
+  .action { gap: 16px; }
+  .links { gap: 8px; }
   .note {
     margin: 0;
     font-size: 13px;
@@ -191,6 +163,63 @@
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
   }
   .note a { color: inherit; }
+
+  /* The one action: Apple's own badge, unaltered as its guidelines require,
+     with the price answered beside it, since the store's "In-App Purchases"
+     label reads as a subscription. The links carry ct= so App Analytics
+     counts what the site sends, and the QR code its own ct= so the two can
+     be told apart. */
+  .get {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  .get .badge img {
+    display: block;
+    height: 68px;
+  }
+  .free {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  /* What "free" leaves out, said plainly under it rather than behind an
+     asterisk, so the app's purchase row is no surprise. Body text's
+     colour at the links' size, and close to the line it qualifies. */
+  .terms {
+    margin: -8px 0 0;
+    width: min(100%, 380px);
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.88);
+    text-align: center;
+    text-wrap: balance;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6);
+  }
+  /* The QR code is for a visitor on a computer, who can't install from
+     there; a phone or tablet already has the badge under its thumb. */
+  .qr {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font: 13px/1.3 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.75);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+  }
+  .qr img {
+    width: 96px;
+    height: 96px;
+    border-radius: 8px;
+  }
+  @media (min-width: 900px) and (pointer: fine) {
+    .qr { display: flex; }
+  }
 </style>
 </head>
 <body>
@@ -199,21 +228,26 @@
     <source src="sky-wide.mp4" type="video/mp4" media="(prefers-reduced-motion: no-preference)">
   </video>
   <header>
-    <img class="icon" src="icon-512.png?v=ob" alt="Timelasso app icon">
+    <a href="https://apps.apple.com/app/id6814762728?pt=160576&ct=site-icon&mt=8"><img class="icon" src="icon-512.png?v=ob" alt="Timelasso on the App Store"></a>
     <h1><img src="wordmark.svg?v=58b0c5b0" alt="timelasso"></h1>
     <p class="strap">Timelapse without a timetable</p>
   </header>
   <footer>
     <p class="pitch">Catch any amount of time in a short video. Pick its length, then record for minutes, hours or days, and stop whenever you like.</p>
-    <div class="signup">
-      <p class="soon">Coming soon to iPhone and iPad</p>
-      <form action="https://buttondown.com/api/emails/embed-subscribe/timelasso" method="post">
-        <label for="email" hidden>Email address</label>
-        <input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
-        <button type="submit">Keep me posted</button>
-      </form>
-      <p class="note">Launch news only. Unsubscribe any time. Or write to <a href="mailto:hello@timelasso.app">hello@timelasso.app</a>.</p>
+    <div class="action">
+      <div class="get">
+        <a class="badge" href="https://apps.apple.com/app/id6814762728?pt=160576&ct=site&mt=8"><img src="app-store-badge.svg" alt="Download on the App Store"></a>
+        <div class="qr">
+          <img src="app-store-qr.svg" alt="">
+          <span>Or scan with an iPhone or iPad</span>
+        </div>
+      </div>
+      <p class="free">Free, with no subscription and no time limits</p>
+      <p class="terms">Every feature is free. Videos carry a small watermark unless you remove it with a one-time purchase.</p>
+    </div>
+    <div class="links">
       <p class="note">Follow on <a href="https://bsky.app/profile/timelasso.bsky.social">Bluesky</a>, <a href="https://www.tiktok.com/@timelasso">TikTok</a> and <a href="https://www.instagram.com/timelasso.app/">Instagram</a>.</p>
+      <p class="note"><a href="support">Support</a> · <a href="privacy">Privacy</a> · <a href="mailto:hello@timelasso.app">hello@timelasso.app</a></p>
     </div>
   </footer>
 </body>
